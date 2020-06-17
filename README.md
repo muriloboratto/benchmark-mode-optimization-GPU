@@ -25,8 +25,7 @@ Example:  bash START.sh <supercomputer> [[[--comparison file] | [--help]]
 
 ----
 ## Hierachy
-
-	       |--------------------------|             |------------|
+	        |--------------------------|             |------------|
                 | TIME | SPEEDUP | MEMORY  |--has-a----->|   RESULTS  |
                 |--------------------------|             |------------|
                            ^                                ^  ^
