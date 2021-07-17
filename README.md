@@ -5,7 +5,7 @@ A practical example to see how it can be used and to see a real example of the s
 The results are impressive for the effort and performance on the supercomputacional environment.
 
 - [Command Line Arguments](#command-line-arguments)
-- [How to execute](#how-to-execute)
+- [How to Execute](#how-to-execute)
 - [Hierachy](#hierachy)
 - [Codes](#codes)
 - [Acknowledgements](#acknowledgements)
@@ -26,7 +26,7 @@ Example:
 ~$ bash START.sh ogbon --comparison mm_blas
 
 ----
-## How to execute
+## How to Execute
 
 > ~$ bash START.sh ogbon --comparison mm_blas
 
