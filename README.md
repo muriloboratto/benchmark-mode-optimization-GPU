@@ -19,7 +19,7 @@ Example:
 
   (required) Specifies the name of supercomputer (word) will be execute
 
-     <supercomputer> - ogbon
+     <supercomputer> - ogbon | airis
 
      file - mm_blas  | mm_cublas 
 
