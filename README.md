@@ -1,13 +1,13 @@
 # Benchmark Matrix Multiply on GPU Environment
 
-The aim of this benchmark is learn how to analyse modules for C using the API BLAS, CUBLAS, CUDA, OPENMP5 and OPENACC. 
+The aim of this benchmark is learn how to analyse modules for C using the APIs CUDA, OpenMP 5 and OpenACC. 
 A practical example to see how it can be used and to see a real example of the speed gains. 
 The results are impressive for the effort and performance on the supercomputacional environment.
 
 - [Command Line Arguments](#command-line-arguments)
 - [How to execute](#how-to-execute)
-- [Hierachy](#resources)
-- [Codes](#hierachy)
+- [Hierachy](#hierachy)
+- [Codes](#codes)
 - [Acknowledgements](#acknowledgements)
 
 ----
@@ -19,7 +19,7 @@ Example:
 
   (required) Specifies the name of supercomputer (word) will be execute
 
-     <supercomputer> - airis | ogbon
+     <supercomputer> - ogbon
 
      file - mm_blas  | mm_cublas 
 
@@ -189,5 +189,4 @@ if(i < n && j < n)
 ----
 ## Acknowledgements
 
-* [1] Raí Bizerra - rai.bizerra@fieb.org.br 
-* [2] Silvano Júnior - silvano.junior@fieb.org.br
+This work has been partially supported by NVIDIA Hardware Grant Program, and I have also worked in cooperation with the researches [Silvano Júnior](silvano.junior@fieb.org.br) and [Raí Bizerra](rai.bizerra@fieb.org.br).
