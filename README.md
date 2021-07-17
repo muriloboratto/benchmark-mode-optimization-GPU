@@ -4,10 +4,18 @@ The aim of this benchmark is learn how to analyse modules for C using the API BL
 A practical example to see how it can be used and to see a real example of the speed gains. 
 The results are impressive for the effort and performance on the supercomputacional environment.
 
+- [Command Line Arguments](#command-line-arguments)
+- [How to execute](#how-to-execute)
+- [Hierachy](#resources)
+- [Codes](#hierachy)
+- [Acknowledgements](#acknowledgements)
+
 ----
 ## Command Line Arguments
 
-Example:  bash START.sh <supercomputer> [[[--comparison file] | [--help]]
+Example:  
+
+~$ bash START.sh <supercomputer> [[[--comparison file] | [--help]]
 
   (required) Specifies the name of supercomputer (word) will be execute
 
@@ -15,12 +23,12 @@ Example:  bash START.sh <supercomputer> [[[--comparison file] | [--help]]
 
      file - mm_blas  | mm_cublas 
 
-     $ bash START.sh ogbon --comparison mm_blas
+~$ bash START.sh ogbon --comparison mm_blas
 
 ----
-## How to execute?
+## How to execute
 
-> bash START.sh ogbon --comparison mm_blas
+> ~$ bash START.sh ogbon --comparison mm_blas
 
 
 ----
@@ -54,11 +62,11 @@ Example:  bash START.sh <supercomputer> [[[--comparison file] | [--help]]
 ~~~c++
 void mm(double *A, double *B, double *C, int n){
 
- for(int i = 0; i < n; i++) 
-  for(int j = 0; j < n; j++)
-    for(int k = 0; k < n; k++) 
+for(int i = 0; i < n; i++) 
+ for(int j = 0; j < n; j++)
+   for(int k = 0; k < n; k++) 
       C[i*n+j]+=A[i*n+k]*B[k*n+j];
-
+			
 }
 ~~~
 
@@ -68,18 +76,18 @@ void mm(double *A, double *B, double *C, int n){
 ~~~c++
 void mm_blas(double *A, double *B, double *C, int size){
 
- char transa ='N';
- char transb ='N';
- double alpha = 1.;
- double beta =  0.;
- int m = size;
- int n = size; 
- int k = size; 
- int lda = size;
- int ldb = size;
- int ldc = size;
+char transa ='N';
+char transb ='N';
+double alpha = 1.;
+double beta =  0.;
+int m = size;
+int n = size; 
+int k = size; 
+int lda = size;
+int ldb = size;
+int ldc = size;
 
- dgemm_(&transa, &transb, &m, &n, &k, &alpha, A, &lda, B, &ldb, &beta, C, &ldc);
+dgemm_(&transa, &transb, &m, &n, &k, &alpha, A, &lda, B, &ldb, &beta, C, &ldc);
 
 }
 ~~~
@@ -90,39 +98,39 @@ void mm_blas(double *A, double *B, double *C, int size){
 ~~~c++
 void mm_cublas(double *A_host, double *B_host, double *C_host, int size){
 
-  double alpha = 1.;
-  double beta =  0.;
-  int m = size;
-  int n = size; 
-  int k = size;
-  int lda = size;
-  int ldb = size;
-  int ldc = size;
+double alpha = 1.;
+double beta =  0.;
+int m = size;
+int n = size; 
+int k = size;
+int lda = size;
+int ldb = size;
+int ldc = size;
             
-  double *A_device;
-  double *B_device;
-  double *C_device;
+double *A_device;
+double *B_device;
+double *C_device;
   
-  cudaMalloc((void**)&A_device, size * size * sizeof(double) ); 
-  cudaMalloc((void**)&B_device, size * size * sizeof(double) ); 
-  cudaMalloc((void**)&C_device, size * size * sizeof(double) ); 
+cudaMalloc((void**)&A_device, size * size * sizeof(double) ); 
+cudaMalloc((void**)&B_device, size * size * sizeof(double) ); 
+cudaMalloc((void**)&C_device, size * size * sizeof(double) ); 
 
-  cublasHandle_t handle;
-  cublasCreate(&handle);
+cublasHandle_t handle;
+cublasCreate(&handle);
 
-  cublasSetMatrix(size, size, sizeof(double), A_host, size, A_device, size);
-  cublasSetMatrix(size, size, sizeof(double), B_host, size, B_device, size);
-  cublasSetMatrix(size, size, sizeof(double), C_host, size, C_device, size);
+cublasSetMatrix(size, size, sizeof(double), A_host, size, A_device, size);
+cublasSetMatrix(size, size, sizeof(double), B_host, size, B_device, size);
+cublasSetMatrix(size, size, sizeof(double), C_host, size, C_device, size);
   
-  cublasDgemm(handle, CUBLAS_OP_N, CUBLAS_OP_N, m, n, k, &alpha, A_device, lda, B_device, ldb, &beta, C_device, ldc);
+cublasDgemm(handle, CUBLAS_OP_N, CUBLAS_OP_N, m, n, k, &alpha, A_device, lda, B_device, ldb, &beta, C_device, ldc);
  
-  cublasGetMatrix(size, size, sizeof(double), C_device, size, C_host, size);
+cublasGetMatrix(size, size, sizeof(double), C_device, size, C_host, size);
 
-  cudaFree(A_device);
-  cudaFree(B_device);
-  cudaFree(C_device);
+cudaFree(A_device);
+cudaFree(B_device);
+cudaFree(C_device);
   
-  cublasDestroy(handle);
+cublasDestroy(handle);
    
 }
 ~~~
@@ -141,7 +149,7 @@ int i, j, k;
     for(j = 0; j < n; j++)
       for(k = 0; k < n; k++) 
         C[i*n+j] += A[i*n+k] * B[k*n+j];
-
+	     
 }
 ~~~
 
@@ -159,7 +167,7 @@ int i, j, k;
       for(j = 0; j < n; j++)
         for(k = 0; k < n; k++)
           C[i*n+j] += A[i*n+k] * B[k*n+j];
-
+			 
 }
 ~~~
 
@@ -172,7 +180,7 @@ int i = blockIdx.x * blockDim.x + threadIdx.x;
 int j = blockIdx.y * blockDim.y + threadIdx.y;
 
 if(i < n && j < n)
-    for( int k = 0; k < n; k++) 
+    for(int k = 0; k < n; k++) 
        C[i*n+j] += A[i*n+k] * B[k*n+j];
 
 }
