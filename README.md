@@ -181,8 +181,5 @@ if(i < n && j < n)
 ----
 ## Acknowledgements
 
-- [1] rai.bizerra@fieb.org.br - Raí Bizerra
-- [2] silvano.junior@fieb.org.br - Silvano Júnior
-
-
-
+* [1] Raí Bizerra - rai.bizerra@fieb.org.br 
+* [2] Silvano Júnior - silvano.junior@fieb.org.br
