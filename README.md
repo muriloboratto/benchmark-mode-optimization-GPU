@@ -1,4 +1,4 @@
-# Benchmark Matrix multiply on GPU Environment
+# Benchmark Matrix Multiply on GPU Environment
 
 The aim of this benchmark is learn how to analyse modules for C using the API BLAS, CUBLAS, CUDA, OPENMP5 and OPENACC. 
 A practical example to see how it can be used and to see a real example of the speed gains. 
