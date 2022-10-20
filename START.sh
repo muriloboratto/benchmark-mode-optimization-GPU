@@ -36,7 +36,7 @@ airis()
  module load llvm/10.0.0
  module load pgi/2019 
  module load gnuplot/5.2.8
- module load blas/gcc/3.8.0
+ module load  openblas/0.3.8
  export PATH=/opt/share/llvm_bkp/bin:$PATH && export LIBRARY_PATH=/opt/share/llvm_bkp/lib:/opt/share/gcc/8.3.0/lib:/opt/share/gcc/8.3.0/lib64:$LIBRARY_PATH && export LD_LIBRARY_PATH=/opt/share/llvm_bkp/lib:/opt/share/gcc/8.3.0/lib:/opt/share/gcc/8.3.0/lib64:$LD_LIBRARY_PATH
  gcc mm.c -o mm -fopenmp 
  gcc mm_blas.c -o mm_blas -lblas -lgfortran -fopenmp
